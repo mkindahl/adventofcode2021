@@ -1,0 +1,9 @@
+[package]
+name = "adventofcode2021"
+version = "0.1.0"
+edition = "2021"
+authors = ["Mats Kindahl <mats.kindahl@gmail.com>"]
+
+[dependencies]
+regex = "1.4.2"
+num = "0.3.1"
