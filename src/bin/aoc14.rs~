@@ -1,0 +1,21 @@
+use std::str::FromStr;
+use std::{
+    fs::File,
+    io::{BufRead, BufReader},
+    path::PathBuf,
+};
+
+fn main() -> std::result::Result<(), Box<dyn std::error::Error>> {
+    let mut path = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+    path.push("src/bin/aoc14ex.dat");
+    let file = File::open(path)?;
+    let input = BufReader::new(file);
+    let edges: Vec<Edge> = input
+        .lines()
+        .map(|line| line.unwrap().parse().unwrap())
+        .collect();
+    let mut paths = Vec::new();
+    collect_paths(&edges, Vec::new(), Cavern::Start, &mut paths);
+    println!("paths: {:?}", paths);
+    Ok(())
+}
